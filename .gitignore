@@ -28,5 +28,6 @@ cypress/videos
 cypress/screenshots
 
 .next
-.yarn
+package-lock.json
+yarn.lock
 
