@@ -8,7 +8,7 @@ describe('empty spec', () => {
     .contains("Cypress")
   })
 
-  it('check that Courses are correctly displayed ', () => {
+  it.only('check that Courses are correctly displayed ', () => {
     cy.visit("http://localhost:3000")
     cy.get("dt").eq(0).contains("4 Courses")
   })
