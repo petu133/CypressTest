@@ -6,7 +6,7 @@ describe('empty spec', () => {
   })
 
   it('h1 contains the text required', () => {
-    cy.get('[data-test="hero-heading"]')
+    cy.getByData("hero-heading")
     .should("exist")
     .contains("Cypress")
   })
