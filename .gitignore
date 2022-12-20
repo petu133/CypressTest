@@ -26,6 +26,7 @@ build/Release
 
 cypress/videos
 cypress/screenshots
+cypres/downloads
 
 .next
 package-lock.json
