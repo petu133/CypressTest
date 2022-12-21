@@ -31,3 +31,7 @@ node_modules
 package-lock.json
 yarn.lock
 
+#The following git commands were used on bash commmand line to fix the problem about redundant folders that have been unnecessarily pushed to the repository
+#git rm -rf --cached .
+#git add .
+
