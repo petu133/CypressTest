@@ -1,5 +1,3 @@
-node_modules
-
 # Logs
 logs
 *.log
@@ -27,6 +25,7 @@ build/Release
 cypress/videos
 cypress/screenshots
 cypres/downloads
+node_modules
 
 .next
 package-lock.json
