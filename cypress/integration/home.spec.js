@@ -17,6 +17,12 @@ describe('empty spec', () => {
     })
   })
 
+  context("courses", () => {
+    it('navigate to course page', () => {
+      cy.getByData("course-0").find("a").eq(3).click()
+    })
+  })
+
 })  
 
 
