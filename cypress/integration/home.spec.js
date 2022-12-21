@@ -5,14 +5,16 @@ describe('empty spec', () => {
     cy.visit("http://localhost:3000")
   })
 
-  it('h1 contains the text required', () => {
-    cy.getByData("hero-heading")
-    .should("exist")
-    .contains("Cypress")
-  })
-
-  it('check that Courses are correctly displayed ', () => {
-    cy.get("dt").eq(0).contains("4 Courses")
+  context("hero", () => {
+    it('h1 contains the text required', () => {
+      cy.getByData("hero-heading")
+      .should("exist")
+      .contains("Cypress")
+    })
+  
+    it('check that Courses are correctly displayed ', () => {
+      cy.get("dt").eq(0).contains("4 Courses")
+    })
   })
 
 })  
