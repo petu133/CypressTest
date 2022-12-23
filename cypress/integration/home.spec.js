@@ -25,9 +25,10 @@ describe('home', () => {
   })
 
   context("subscription display", () => {
-    it.only('subscribe for updates', function() {
+    it('subscribe for updates', function() {
       cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)')
-      cy.get('.mt-4 > .mt-3 > .w-full').as('x').type("mail@fake.com{enter}")
+      cy.get('.mt-4 > .mt-3 > .w-full').type("mail@fake.com{enter}")
+      cy.get('#email-address', {timeout: 10000}).should('be.empty')
     })
   })
 })  
