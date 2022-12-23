@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('empty spec', () => {
+describe('subscribe', () => {
     beforeEach(() =>{
       cy.visit("http://localhost:3000")
     })
