@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('empty spec', () => {
+describe('home', () => {
   beforeEach(() =>{
     cy.visit("http://localhost:3000")
   })
@@ -21,6 +21,13 @@ describe('empty spec', () => {
     it('navigate to course page', () => {
       cy.getByData("course-0").find("a").eq(3).click()
       cy.location("pathname").should("eq", "/testing-your-first-application")
+    })
+  })
+
+  context("suscription display", () => {
+    it.only('subscribe for updates', () =>{
+      cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)')
+
     })
   })
 
