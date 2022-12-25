@@ -5,11 +5,15 @@ describe('home', () => {
     cy.visit("http://localhost:3000")
   })
 
-  context("hero", () => {
+  context("main page display", () => {
     it('h1 contains the text required', () => {
       cy.getByData("hero-heading")
       .should("exist")
       .contains("Cypress")
+    })
+
+    it.only('features', () => {
+      cy.get('.mx-auto > .mt-2').should('have.text', "What you'll learn")
     })
   
     it('check that Courses are correctly displayed ', () => {
