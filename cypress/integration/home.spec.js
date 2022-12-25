@@ -14,11 +14,12 @@ describe('home', () => {
 
     it.only('features', () => {
       cy.get('.mx-auto > .mt-2').should('have.text', "What you'll learn")
-      cy.get('.grid').children().then(($features) => {
-       
-        print($features)
+      cy.get('.grid').children().each(($el, index, $list) =>{
+        const text = $el.find('h3').text()
+        const text1 = $el.next().find('h3').text()
+        expect(text).to.not.equal(text1)
       })
-      .should('have.length', 6)
+      cy.get('.grid').children().should('have.length', 6).and('be.visible')
     })
   
     it('check that Courses are correctly displayed ', () => {
