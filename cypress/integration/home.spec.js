@@ -14,6 +14,11 @@ describe('home', () => {
 
     it.only('features', () => {
       cy.get('.mx-auto > .mt-2').should('have.text', "What you'll learn")
+      cy.get('.grid').children().then(($features) => {
+       
+        print($features)
+      })
+      .should('have.length', 6)
     })
   
     it('check that Courses are correctly displayed ', () => {
