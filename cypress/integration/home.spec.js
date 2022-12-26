@@ -9,7 +9,7 @@ describe('home', () => {
     it('h1 contains the text required', () => {
       cy.getByData("hero-heading")
       .should("exist")
-      .contains("Cypress")
+      .contains("Cypress").and('have.css', 'text-decoration-line', 'none')
     })
 
     it('features', () => {
@@ -17,7 +17,7 @@ describe('home', () => {
       cy.get('.grid').children().each(($el, index, $list) =>{
         const currentText = $el.find('h3').text()
         const nextText = $el.next().find('h3').text()
-        expect(text).to.not.equal(text1)
+        expect(currentText).to.not.equal(nextText)
       })
       // "." captures the class name
       cy.get('.grid').children().should('have.length', 6).and('be.visible') 
