@@ -1,15 +1,17 @@
 /// <reference types="Cypress" />
 
+import { Home } from "../page-object/home"
+
 describe('home', () => {
+  const home = new Home();
   beforeEach(() =>{
-    cy.visit("http://localhost:3000")
+    home.navigate();
   })
 
   context("main page display", () => {
     it('h1 contains the text required', () => {
-      cy.getByData("hero-heading")
-      .should("exist")
-      .contains("Cypress").and('have.css', 'text-decoration-line', 'none')
+      let titleDisplay = new Home();
+      home.mainTitleDisplay("hero-heading", "Cypress")
     })
 
     it('features', () => {
@@ -20,7 +22,7 @@ describe('home', () => {
         expect(currentText).to.not.equal(nextText)
       })
       // "." captures the class name
-      cy.get('.grid').children().should('have.length', 6).and('be.visible') 
+      cy.get('.grid').children().should('have.length', 6).and('be.visible')  //here i need to add a page object
     })
   
     it('check that Courses are correctly displayed ', () => {
@@ -30,14 +32,14 @@ describe('home', () => {
 
   context("courses", () => {
     it('navigate to course page', () => {
-      cy.getByData("course-0").find("a").eq(3).click()
+      cy.getByData("course-0").find("a").eq(3).click()  //here i need to add a page object
       cy.location("pathname").should("eq", "/testing-your-first-application")
     })
   })
 
   context("subscription display", () => {
     it('subscribe for updates', function() {
-      cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)')
+      cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)') //here i need to add a page object
       cy.get('.mt-4 > .mt-3 > .w-full').type("mail@fake.com{enter}")
       cy.get('#email-address', {timeout: 10000}).should('be.empty')
     })

@@ -1,8 +1,11 @@
 /// <reference types="Cypress" />
 
+import { Home } from "../page-object/home"
+
 describe('course journey', () => {
+  const home = new Home();
     beforeEach(() =>{
-      cy.visit("http://localhost:3000")
+      home.navigate();
     })
   
     it("user's path go through course's lessons ", () => {

@@ -1,8 +1,11 @@
 /// <reference types="Cypress" />
 
+import { Home } from "../page-object/home"
+
 describe('subscribe', () => {
+  const home = new Home();
     beforeEach(() =>{
-      cy.visit("http://localhost:3000")
+      home.navigate();
     })
   
     it('allowing a valid user to subscribe successfully using an email address', () => {
