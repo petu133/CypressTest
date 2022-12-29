@@ -21,8 +21,7 @@ describe('home', () => {
         const nextText = $el.next().find('h3').text()
         expect(currentText).to.not.equal(nextText)
       })
-      // "." captures the class name
-      cy.get('.grid').children().should('have.length', 6).and('be.visible')  //here i need to add a page object
+      home.featuresQuantity(6);
     })
   
     it('check that Courses are correctly displayed ', () => {
