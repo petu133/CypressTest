@@ -14,4 +14,10 @@ export class Home {
         cy.get('.grid').children().should('have.length', number).and('be.visible')
         // "." captures the class name
     }
+
+    featureText(index, desiredText){
+        console.log("THE TYPE IS : " + typeof index); // prints what the type of the variable passed is
+        let number = index + 1; // because the yielded elemnt is 1 based, not zero based
+        cy.get(':nth-child('+ number +') > .flow-root > .-mt-6 > .mt-8').should('have.text', desiredText)
+    }
 }

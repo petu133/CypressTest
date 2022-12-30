@@ -14,7 +14,7 @@ describe('home', () => {
       home.mainTitleDisplay("hero-heading", "Cypress")
     })
 
-    it('features', () => {
+    it.only('features', () => {
       cy.get('.mx-auto > .mt-2').should('have.text', "What you'll learn")
       cy.get('.grid').children().each(($el, index, $list) =>{
         const currentText = $el.find('h3').text()
@@ -22,6 +22,9 @@ describe('home', () => {
         expect(currentText).to.not.equal(nextText)
       })
       home.featuresQuantity(6);
+      home.featureText(0, "Prepare your Testing Mindset")
+      home.featureText(3, "Learn Database Initialization & Seeding")
+      
     })
   
     it('check that Courses are correctly displayed ', () => {
