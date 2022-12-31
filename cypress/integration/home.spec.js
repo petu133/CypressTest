@@ -15,7 +15,7 @@ describe('home', () => {
     })
 
     it.only('features', () => {
-      cy.get('.mx-auto > .mt-2').should('have.text', "What you'll learn")
+      home.featuresMainTitle("What you'll learn")
       cy.get('.grid').children().each(($el, index, $list) =>{
         const currentText = $el.find('h3').text()
         const nextText = $el.next().find('h3').text()

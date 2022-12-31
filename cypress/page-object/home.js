@@ -15,6 +15,10 @@ export class Home {
         // "." captures the class name
     }
 
+    featuresMainTitle(title){
+        cy.get('.mx-auto > .mt-2').contains(title)
+    }
+
     featureText(index, desiredText){
         console.log("THE TYPE IS : " + typeof index); // prints what the type of the variable passed is
         let number = index + 1; // because the yielded elemnt is 1 based, not zero based
