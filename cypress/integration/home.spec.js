@@ -9,12 +9,11 @@ describe('home', () => {
   })
 
   context("main page display", () => {
-    it('h1 contains the text required', () => {
-      let titleDisplay = new Home();
+    it('h1 contains the text required', () => { 
       home.mainTitleDisplay("hero-heading", "Cypress")
     })
 
-    it.only('features', () => {
+    it('features', () => {
       home.featuresMainTitle("What you'll learn")
       cy.get('.grid').children().each(($el, index, $list) =>{
         const currentText = $el.find('h3').text()

@@ -1,6 +1,11 @@
-export class Home {
+export class Home { // the use of class is nice when one needs variables
     navigate() {
         cy.visit("http://localhost:3000")
+    }
+
+    startCourseJourney(){
+        cy.getByData("course-0").find("a").eq(3).click()
+        return
     }
 
     mainTitleDisplay(mainTitleSelector, mainTitleText){
@@ -9,7 +14,7 @@ export class Home {
         .contains(mainTitleText).and('have.css', 'text-decoration-line', 'none')
     }
 
-    featuresQuantity(featuresNumber){
+    featuresQuantity(featuresNumber){ 
         let number = parseInt(featuresNumber)
         cy.get('.grid').children().should('have.length', number).and('be.visible')
         // "." captures the class name
