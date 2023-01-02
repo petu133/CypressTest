@@ -1,4 +1,19 @@
-export class Home { // the use of class is nice when one needs variables
+export class Home { // the use of a class is nice when one needs variables
+    featuresAllUniqueText(){
+        cy.get('.grid').children()
+      .then($els => {
+        const setTexts = new Set();
+        //... operator used to spread all yielded children elements out and store those to an iterable
+        [...$els].forEach(el => setTexts.add(el.innerText)); //Set stores only unique values
+        return setTexts;
+      })
+      .then(setTexts => {
+        cy.get('.grid').children().its('length')
+        .should('eq', setTexts.size) //if all the texts stored were different then the assertion should correctly pass 
+      })
+      return;
+    }
+    
     navigate() {
         cy.visit("http://localhost:3000")
     }

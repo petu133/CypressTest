@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
 
+import { get } from "lodash";
 import { Home } from "../page-object/home"
 
 describe('home', () => {
@@ -15,15 +16,10 @@ describe('home', () => {
 
     it('features', () => {
       home.featuresMainTitle("What you'll learn")
-      cy.get('.grid').children().each(($el, index, $list) =>{
-        const currentText = $el.find('h3').text()
-        const nextText = $el.next().find('h3').text()
-        expect(currentText).to.not.equal(nextText)
-      })
+      home.featuresAllUniqueText();
       home.featuresQuantity(6);
       home.featureText(0, "Prepare your Testing Mindset")
       home.featureText(3, "Learn Database Initialization & Seeding")
-      
     })
   
     it('check that Courses are correctly displayed ', () => {
