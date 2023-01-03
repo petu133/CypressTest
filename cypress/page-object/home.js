@@ -1,16 +1,15 @@
 export class Home { // the use of a class is nice when one needs variables
     featuresAllUniqueText(){
         cy.get('.grid').children()
-      .then($els => {
-        const setTexts = new Set();
-        //... operator used to spread all yielded children elements out and store those to an iterable
-        [...$els].forEach(el => setTexts.add(el.innerText)); //Set stores only unique values
-        return setTexts;
-      })
-      .then(setTexts => {
-        cy.get('.grid').children().its('length')
-        .should('eq', setTexts.size) //if all the texts stored were different then the assertion should correctly pass 
-      })
+        .then($els => {
+            const setTexts = new Set();
+            //... operator used to spread all yielded children elements out and store those to an iterable
+            [...$els].forEach(el => setTexts.add(el.innerText)); //Set stores only unique values
+            return setTexts;})
+        .then(setTexts => {
+            cy.get('.grid').children().its('length')
+            .should('eq', setTexts.size) //if all the texts stored were different then the assertion should correctly pass 
+         })
       return;
     }
     
@@ -43,5 +42,13 @@ export class Home { // the use of a class is nice when one needs variables
         console.log("THE TYPE IS : " + typeof index); // prints what the type of the variable passed is
         let number = index + 1; // because the yielded elemnt is 1 based, not zero based
         cy.get(':nth-child('+ number +') > .flow-root > .-mt-6 > .mt-8').should('have.text', desiredText)
+    }
+
+    emailSuccess(){
+        cy.getByData("email-input").fakeMail()
+        cy.getByData("submit-button").click()
+        cy.getByData("success-message")
+        .should("exist").contains("@faked.com")
+        return;
     }
 }

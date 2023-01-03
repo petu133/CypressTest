@@ -27,4 +27,18 @@ Cypress.Commands.add("getByData", (selector) => {
   return cy.get(`[data-test=${selector}]`)
 })
 
+Cypress.Commands.add("fakeMail", { prevSubject: true } , (subject) => {
+
+  function makeid() {
+    let result           = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let length = characters.length;
+    for ( let i = 0; i < Math.ceil(Math.random() * 16) ; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * length));
+    }
+    return result.concat("@faked.com");
+  }
+  return cy.wrap(subject).type(makeid())
+ })
+
 export {}
