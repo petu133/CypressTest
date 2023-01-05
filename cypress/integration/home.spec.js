@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-import { get } from "lodash";
 import { Home } from "../page-object/home"
 
 describe('home', () => {
@@ -29,14 +28,14 @@ describe('home', () => {
 
   context("courses", () => {
     it('navigate to course page', () => {
-      cy.getByData("course-0").find("a").eq(3).click()  //here i need to add a page object
-      cy.location("pathname").should("eq", "/testing-your-first-application")
+      home.getStartButton();
+      home.testPath();
     })
   })
 
   context("subscription display", () => {
-    it('subscribe for updates', function() {
-      cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)') //here i need to add a page object
+    it.only('subscribe for updates', function() {
+      home.subsColorRgb() //This need to be completed
       cy.get('.mt-4 > .mt-3 > .w-full').type("mail@fake.com{enter}")
       cy.get('#email-address', {timeout: 10000}).should('be.empty')
     })

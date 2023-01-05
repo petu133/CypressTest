@@ -17,6 +17,14 @@ export class Home { // the use of a class is nice when one needs variables
         cy.visit("http://localhost:3000")
     }
 
+    getStartButton(){
+        cy.getByData("course-0").find("a").eq(3).click()
+    }
+
+    testPath(){
+        cy.location("pathname").should("eq", "/testing-your-first-application")
+    }
+
     startCourseJourney(){
         cy.getByData("course-0").find("a").eq(3).click()
         return
@@ -26,7 +34,7 @@ export class Home { // the use of a class is nice when one needs variables
         cy.getByData(mainTitleSelector)
         .should("exist")
         .contains(mainTitleText).and('have.css', 'text-decoration-line', 'none')
-    }
+}
 
     featuresQuantity(featuresNumber){ 
         let number = parseInt(featuresNumber)
@@ -50,5 +58,9 @@ export class Home { // the use of a class is nice when one needs variables
         cy.getByData("success-message")
         .should("exist").contains("@faked.com")
         return;
+    }
+
+    subsColorRgb(r, g, b){
+        cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)')
     }
 }
