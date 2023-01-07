@@ -61,6 +61,8 @@ export class Home { // the use of a class is nice when one needs variables
     }
 
     subsColorRgb(r, g, b){
-        cy.get('.text-sm').should('have.css', 'color', 'rgb(175, 179, 199)')
+        let rgbChoice = `rgb(${r}, ${g}, ${b})`;
+        //let colorChoice = new String(rgbChoice)
+        cy.get('.text-sm').should('have.css', 'color', rgbChoice)
     }
 }

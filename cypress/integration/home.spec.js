@@ -35,7 +35,7 @@ describe('home', () => {
 
   context("subscription display", () => {
     it.only('subscribe for updates', function() {
-      home.subsColorRgb() //This need to be completed
+      home.subsColorRgb(175, 179, 199) //This need to be completed
       cy.get('.mt-4 > .mt-3 > .w-full').type("mail@fake.com{enter}")
       cy.get('#email-address', {timeout: 10000}).should('be.empty')
     })
